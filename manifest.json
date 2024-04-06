@@ -1,0 +1,22 @@
+{
+  "name": "Linkedin addon",
+  "version": "0.1.0",
+  "description": "This is a Linkedin addon, just for fun",
+  "permissions": ["storage", "tabs"],
+  "host_permissions": ["https://*.linkedin.com/*"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://*.linkedin.com/*"],
+      "js": ["contentScript.js"],
+      "css": ["style.css"]
+    }
+  ],
+  "action": {
+    "default_title": "Linkedin addon",
+    "default_popup": "popup.html"
+  },
+  "manifest_version": 3
+}
