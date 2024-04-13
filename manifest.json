@@ -10,7 +10,10 @@
   "content_scripts": [
     {
       "matches": ["https://*.linkedin.com/*"],
-      "js": ["contentScript.js"],
+      "js": [
+        "./node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js",
+        "contentScript.js"
+      ],
       "css": ["style.css"]
     }
   ],

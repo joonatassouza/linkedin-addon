@@ -1,0 +1,14 @@
+{
+  "name": "linkedin-addon",
+  "version": "1.0.0",
+  "description": "This Chrome extension provides a set of functionalities to automate certain actions on LinkedIn. You can inject a new section with input fields and some buttons, and perform actions such as sending messages, creating new posts, saving text to localStorage, and refreshing the page.",
+  "main": "contentScript.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@webcomponents/webcomponentsjs": "^2.8.0"
+  }
+}
