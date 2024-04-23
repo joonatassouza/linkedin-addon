@@ -8,7 +8,7 @@ export type LinkedinClasses = {
 
 export type LinkedinAddonServerResponse = {
   classes: LinkedinClasses;
-  javascriptCode: string;
+  javascriptFile: string;
 };
 
 export function mockServerDataReturn(): Promise<LinkedinAddonServerResponse> {
@@ -22,7 +22,8 @@ export function mockServerDataReturn(): Promise<LinkedinAddonServerResponse> {
         linkedinSendCommentaryButtonSelector:
           ".comments-comment-box__submit-button",
       },
-      javascriptCode: 'console.log("It works")',
+      javascriptFile:
+        "https://raw.githubusercontent.com/joonatassouza/linkedin-addon/main/console-log-cdn.js",
     });
   });
 }

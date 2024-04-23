@@ -11,17 +11,18 @@ chrome.webNavigation.onDOMContentLoaded.addListener((tab) => {
 
 chrome.tabs.onUpdated.addListener((tabId) => {
   if (tabId === linkedinTabId) {
-    mockServerDataReturn().then(({ classes }) => {
+    mockServerDataReturn().then(({ classes, javascriptFile }) => {
       chrome.tabs.sendMessage(tabId, {
         type: "INIT",
         data: classes,
+        javascriptFile,
+      });
+
+      executeScript({
+        tabId,
+        script: javascriptFile,
       });
     });
-
-    // executeScript({
-    //   tabId,
-    //   script: "",
-    // });
   }
 });
 

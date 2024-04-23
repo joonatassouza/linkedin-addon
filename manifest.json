@@ -2,7 +2,7 @@
   "name": "Linkedin addon",
   "version": "0.1.0",
   "description": "This is a Linkedin addon, just for fun",
-  "permissions": ["storage", "tabs", "scripting"],
+  "permissions": ["storage", "tabs", "webNavigation", "scripting"],
   "host_permissions": ["https://*.linkedin.com/*"],
   "background": {
     "service_worker": "background.js",
