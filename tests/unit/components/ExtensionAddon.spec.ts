@@ -170,7 +170,7 @@ describe("Extension Custom Element", () => {
     });
   });
 
-  it("should send a message to a new post", () => {
+  it("should send a message to a new post", async () => {
     const textToInput = "text to input";
     let textReceived = "";
 
@@ -178,15 +178,8 @@ describe("Extension Custom Element", () => {
     const { input: linkedinInput, sendButton: linkedinSendButton } =
       prepareLinkedinCommentsOpenedMockHtml();
 
-    const sendButtosn = document.querySelector(
-      ".comments-comment-box__submit-button"
-    ) as HTMLButtonElement;
-
-    console.log("sendButtosn", sendButtosn);
-
-    sendButtosn.addEventListener("click", () => {
-      console.log("cascaoiksajoohiab");
-      textReceived = linkedinInput.value;
+    linkedinSendButton.addEventListener("click", () => {
+      textReceived = linkedinInput.innerText;
     });
 
     input.value = textToInput;
@@ -194,6 +187,16 @@ describe("Extension Custom Element", () => {
 
     sendButton.click();
 
-    expect(textReceived).toBe(textReceived);
+    await wait(3);
+
+    expect(textReceived).toBe(textToInput);
   });
 });
+
+function wait(seconds: number) {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve(true);
+    }, seconds * 1000);
+  });
+}

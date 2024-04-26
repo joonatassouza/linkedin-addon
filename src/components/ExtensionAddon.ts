@@ -276,6 +276,7 @@ export class ExtensionAddon extends HTMLElement {
 
           if (sendButtonElement) {
             sendButtonElement.click();
+
             element.innerText = "";
           }
         }, 1000);
