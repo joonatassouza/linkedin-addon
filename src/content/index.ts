@@ -22,17 +22,6 @@ chrome.runtime.onMessage.addListener(
       linkedinSendCommentaryButtonSelector =
         data.linkedinSendCommentaryButtonSelector;
 
-      const meta = document.createElement("meta");
-      meta.setAttribute("http-equiv", "Content-Security-Policy");
-      meta.setAttribute(
-        "content",
-        "script-src 'self' 'wasm-unsafe-eval' 'inline-speculation-rules' http://localhost:* http://127.0.0.1:* https://raw.githubusercontent.com;"
-      );
-      document.head.appendChild(meta);
-
-      document.body.appendChild(document.createElement("script")).src =
-        javascriptFile;
-
       init();
     }
   }

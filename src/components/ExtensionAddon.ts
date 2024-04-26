@@ -9,9 +9,18 @@ export class ExtensionAddon extends HTMLElement {
 
   constructor() {
     super();
+  }
+
+  connectedCallback() {
     this.build();
     this.addListeners();
     this.updateButtonStates();
+  }
+
+  disconnectedCallback() {
+    const section = this.querySelector(".vengresso-linkedin-section");
+
+    if (section) this.removeChild(section);
   }
 
   static get observedAttributes() {
@@ -143,8 +152,10 @@ export class ExtensionAddon extends HTMLElement {
   }
 
   build() {
-    const shadow = this.attachShadow({ mode: "closed" });
-    shadow.appendChild(this.styles());
+    const shaddow = this.attachShadow({
+      mode: process.env.NODE_ENV === "test" ? "open" : "closed",
+    });
+    shaddow.appendChild(this.styles());
 
     const section = document.createElement("section");
     section.className = "vengresso-linkedin-section";
@@ -160,8 +171,9 @@ export class ExtensionAddon extends HTMLElement {
     footer.className = "vengresso-linkedin-section-foooter";
     footer.innerHTML = `
       <section class="vengresso-linkedin-section-hr"></section>
-      <em class="vengresso-linkedin-section-foooter-powered-by"
-        >Powered by: Jonatas</em
+      <em class="vengresso-linkedin-section-foooter-powered-by">
+        Powered by: Jonatas
+      </em
       >
     `;
 
@@ -176,7 +188,7 @@ export class ExtensionAddon extends HTMLElement {
     section.appendChild(main);
     section.appendChild(footer);
 
-    shadow.appendChild(section);
+    shaddow.appendChild(section);
   }
 
   styles() {

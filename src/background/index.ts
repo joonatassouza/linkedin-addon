@@ -1,5 +1,4 @@
 import { mockServerDataReturn } from "../service/api.ts";
-import { executeScript } from "../utils/execute-script.ts";
 
 let linkedinTabId: number;
 
@@ -16,11 +15,6 @@ chrome.tabs.onUpdated.addListener((tabId) => {
         type: "INIT",
         data: classes,
         javascriptFile,
-      });
-
-      executeScript({
-        tabId,
-        script: javascriptFile,
       });
     });
   }
